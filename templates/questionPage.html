@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question App</title>
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./stylesheet.css">
+<link rel="stylesheet" href="../dist//loading-bar.min.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container-fluid">
+            <div class="ldBar row" data-preset="rainbow" data-value="50" data-type="stroke" style="width: 100px; height:30px; margin:auto;"></div>
+            <div class="question-container container-fluid row ">
+                <!-- <div class="col-1">| |</div> -->
+                <h1 class="col-12 text-center">What is this instrument?</h1>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2 time-container">
+                    <div class="time">
+                        12
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="images">
+                        <img src="https://via.placeholder.com/1080x350" alt="" style="height: 350px; max-width: 100%;">
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="score">
+                        32
+                    </div>
+                </div>
+            </div>
+            <div class="row container-fluid mt-5">
+                <div class="col-lg-6">
+                    <div class="answers row mb-2"><button class="btn btn-primary" id="answer-1">bruh</button></div>
+                    <div class="answers row mb-2"><button class="btn btn-primary" id="answer-2">bruh</button></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="answers row mb-2"><button class="btn btn-primary" id="answer-3">bruh</button></div>
+                    <div class="answers row mb-2"><button class="btn btn-primary" id="answer-4">bruh</button></div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+<script src="./js/components.js"></script>
+<script src="./js/controller.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/model.js"></script>
+<script src="./js/view.js"></script>
+<script src="./questionPage.js"></script>
+<script src="../dist/loading-bar.min.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+
+</body>
+</html>
