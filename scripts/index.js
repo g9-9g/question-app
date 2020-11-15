@@ -12,6 +12,8 @@ let init =  () => {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+      view.setActiveScreen('quizPage')
+      
 }
 
 init()

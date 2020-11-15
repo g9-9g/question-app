@@ -1,0 +1,52 @@
+$RED: #4A001F;
+$BLUE: #068179;
+$LIME: #577204;
+$ORANGE: #a84808;
+
+*{
+    text-decoration: none;
+}
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+body, .app{
+    height: 100vh;
+    width: 100vw;
+    padding: 10px;
+}
+.answers{
+    width:100%;
+    height: 100%;
+    button{
+        width:100%;
+        height:100%;
+    }
+}
+.ldBar-label {
+    color: #09f;
+    font-family: 'varela round';
+    font-size: 2.5em;
+    font-weight: 900;
+}
+#answer-1{
+    background-color: $RED;
+}
+#answer-2{
+    background-color: $BLUE;
+}
+#answer-3{
+    background-color: $LIME;
+}
+#answer-4{
+    background-color: $ORANGE;
+}
+.ans-btn{
+    // color: rgb(194, 189, 189);
+    color: white;
+    font-size: 1.5em;
+    &:hover{
+        color: white;
+        transition: linear 0.5s;
+    }
+}

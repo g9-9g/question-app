@@ -13,7 +13,10 @@
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 <link rel="stylesheet" href="./stylesheet.css">
+
 <link rel="stylesheet" href="../dist//loading-bar.min.css">
+
+<script src="../dist/loading-bar.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -26,8 +29,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-2 time-container d-flex align-items-center justify-content-center">
-                    <div class="time d-flex align-items-center justify-content-center">
-                        <div class="ldBar label-center" data-preset="bubble" data-value="50" data-type="stroke" style="width: 100%; height: 200px" stroke-width="100px"></div>
+                    <div id="progress" class=" label-center time d-flex align-items-center justify-content-center" data-preset="bubble" data-type="stroke" style="width: 100%; height: 200px" stroke-width="100px">
+                        <!-- <div class="ldBar "  data-value="0" ></div> -->
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -36,19 +39,19 @@
                     </div>
                 </div>
                 <div class="col-lg-2 d-flex align-items-center justify-content-center"> 
-                    <div class="score d-flex align-items-center justify-content-center">
-                      <h1>100+</h1>
+                    <div class="score-container d-flex align-items-center justify-content-center">
+                      <h1 id="score">100+</h1>
                     </div>
                 </div>
             </div>
             <div class="row container-fluid mt-4">
                 <div class="col-lg-6">
-                    <div class="answers row mb-2"><button class="btn btn-primary" id="answer-1">bruh</button></div>
-                    <div class="answers row mb-2"><button class="btn btn-primary" id="answer-2">bruh</button></div>
+                    <div class="answers row mb-2"><button class="btn ans-btn" id="answer-1">bruh</button></div>
+                    <div class="answers row mb-2"><button class="btn ans-btn" id="answer-2">bruh</button></div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="answers row mb-2"><button class="btn btn-primary" id="answer-3">bruh</button></div>
-                    <div class="answers row mb-2"><button class="btn btn-primary" id="answer-4">bruh</button></div>
+                    <div class="answers row mb-2"><button class="btn ans-btn" id="answer-3">bruh</button></div>
+                    <div class="answers row mb-2"><button class="btn ans-btn" id="answer-4">bruh</button></div>
                 </div>                
             </div>
         </div>
@@ -67,7 +70,6 @@
 <script src="./js/model.js"></script>
 <script src="./js/view.js"></script>
 <script src="./questionPage.js"></script>
-<script src="../dist/loading-bar.min.js"></script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
 
@@ -76,4 +78,4 @@
 <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
 
 </body>
-</html>
+</html> 
