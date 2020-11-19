@@ -36,3 +36,68 @@ components.quizPage = `
                 </div>                
             </div>
         </div>`
+
+
+
+// 
+components.loginPage = `
+    <div class="loginPage">
+        <input type="email" id="email-inp">
+        <div class="err-email-inp"></div>
+        <input type="password" id="pwd-inp">
+        <div class="err-pwd-inp"></div>
+        <button id="login-with-email">Log in with email</button>
+        <div class="err-global-1"></div>
+        <button id="login-with-gaccount">Login with google account</button>
+        <button id="to-register">register</button>
+    </div>
+`
+components.registerPage = `
+    <div class="registerPage">
+        <input type="email" id="email-inp">
+        <div class="err-email-inp"></div>
+        <input type="password" id="pwd-inp">
+        <div class="err-pwd-inp"></div>
+        <input type="password" id="cf-pwd-inp">
+        <div class="err-cf-pwd-inp"></div>
+        <input type="text" id="username-inp">
+        <div class="err-username-inp"></div>
+        <button id="register-with-email">Register with email</button>
+        <div class="err-global-2"></div>
+        <button id="register-with-gaccount">Register with google account</button>
+    </div>
+`
+
+components.verifiedEmail = `
+    <div class="veri-container">
+        <div>Please verified your email</div>
+        <div class="err-veri"></div>
+        <button id='send-verification-mail'>Send verification</button>
+    </div>
+`
+
+components.userInfo = (username,email,pwd,photoURL) => {
+ return `
+ <div class="userInfo-container">
+ <!-- https://petrotimes.vn/stores/news_dataimages/thuhoa/012015/14/09/1Anonymous1.jpg -->
+ <form id="user-info">
+     <div contenteditable="true" id="display-username" class="display-container">${username}</div>
+     <div class="err-display-username"></div>
+     <div contenteditable="true" id="display-email" class="display-container">${email}</div>
+     <div class="err-display-email"></div>
+     <div contenteditable="true" id="display-pwd" class="display-container">${pwd}</div>
+     <div class="err-display-pwd"></div>
+     <div contenteditable="true" id="display-cf-pwd" class="display-container">${pwd}</div>
+     <div class="err-display-cf-pwd"></div>
+     <div id="display-photoURL">
+         <img src="${photoURL}" alt="">
+         <div class="err-display-photoURL"></div>
+         <input type="file">
+     </div>
+     
+     <div class="change-err"></div>
+     <button id="save-change">Save change</button>
+ </form>
+</div>
+`
+} 

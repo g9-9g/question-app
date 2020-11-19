@@ -113,7 +113,8 @@ let data = [
     }
 ]
 
-view.setActiveScreen = (screenName) => {
+view.setActiveScreen = (screenName,clear=true) => {
+    if (clear) $("#app-container").empty();
     switch (screenName) {
         case 'quizPage':
             $('body').html(() => {
@@ -121,8 +122,156 @@ view.setActiveScreen = (screenName) => {
             })
             view.startNewGame();
         break;
+        case "login":
+            $(()=> {
+                // init element
+                $("#app-container").append(components.loginPage)
+                // event
+                $('#login-with-email').click((e)=> {
+                    const email = $("#email-inp").val();
+                    const pwd = $("#pwd-inp").val();
+                    console.log(email,pwd)
+                    controller.login({
+                        email:email,
+                        pwd:pwd,
+                    })
+                })
+                $('#login-with-gaccount').click((e)=> {
+                    model.createUser(null,{prototype:'google-account'})
+                })
+                $('#to-register').click(()=>view.setActiveScreen('register'));
+                // err-event (thay event click thanh event khac)
+                $('#email-inp').keyup(()=>{
+                    controller.validate('email',$('#email-inp').val(),'.err-email-inp')
+                    return true;
+                });
+                $('#pwd-inp').keyup(()=>{
+                    controller.validate('pwd-lv1',$('#pwd-inp').val(),'.err-pwd-inp')
+                    return true;
+                });
+            })
+            break;
+        case "register":
+            $(()=> {
+                // init element
+                $("#app-container").append(components.registerPage)
+                // event
+                $('#register-with-email').click((e)=> {
+                    const email = $("#email-inp").val();
+                    const pwd = $("#pwd-inp").val();
+                    const username = $('#username-inp').val();
+                    const cf_pwd = $('#cf-pwd-inp').val();
+                    controller.register({
+                        email:email,
+                        pwd:pwd,
+                        cf_pwd:cf_pwd,
+                        username:username,
+                    })
+                })
+                $('#register-with-gaccount').click((e)=> {
+                    console.log(e);
+                    model.createUser(null,{prototype:'google-account'})
+                })
+                // err-event (thay event click thanh event khac)
+                $('#email-inp').keyup(()=>{
+                    controller.validate('email',$('#email-inp').val(),'.err-email-inp')
+                    return true;
+                });
+                $('#pwd-inp').keyup(()=>{
+                    controller.validate('pwd-lv1',$('#pwd-inp').val(),'.err-pwd-inp')
+                    return true;
+                });
+                $('#username-inp').keyup(()=>{
+                    controller.validate('username',$('#username-inp').val(),'.err-username-inp')
+                    return true;
+                })
+                $('#cf-pwd-inp').keyup(()=>{
+                    controller.comparePWD($('#pwd-inp').val(),$('#cf-pwd-inp').val(),'.err-cf-pwd-inp')
+                    return true;
+                })
+            })        
+            break;
+        case 'send-verified-email':
+            $(()=> {
+                $('#app-container').append(components.verifiedEmail);
+                $('#send-verification-mail').click((e)=> {
+                    // send email ver
+                    model.sendVerification()
+                    .then(()=>{
+                        // done
+                        console.log('done!!!')
+                    })
+                    .catch((err) => {
+                        view.setErrorMessage(err,'.err-veri');
+                    })
+                })
+            })
+            break;
+        case 'homepage':
+            $(()=> {
+                // init element
+                $("#app-container").prepend(components.homepage);
+                // event
+                console.log(model.curUser);
+            })
+
+            break;
+        case 'userInfo':
+            $(()=> {
+                // init element
+                $("#app-container").append(components.userInfo(
+                    model.curUser.displayName,
+                    model.curUser.email,
+                    '............',
+                    model.curUser.photoURL
+                ))
+                // event
+                $('#save-change').click((e)=>{
+                    e.preventDefault();   
+                    controller.uploadFiles( $('#display-photoURL > input')[0].files)
+                    .then((url) => {
+                        controller.updateProfile({
+                            username:$('#display-username').html(),
+                            email:$('#display-email').html(),
+                            pwd:$('#display-pwd').html(),
+                            cf_pwd:$('#display-cf-pwd').html(),
+                            photoURL:url
+                        });
+                    })
+                })
+                // err
+                $('#display-email').keyup(()=>{
+                    controller.validate('email',$('#display-email').html(),'.err-display-email')
+                    return true;
+                });
+                $('#display-pwd').keyup(()=>{
+                    controller.validate('pwd-lv1',$('#display-pwd').html(),'.err-display-pwd')
+                    return true;
+                });
+                $('#display-username').keyup(()=>{
+                    controller.validate('username',$('#display-username').html(),'.err-display-username')
+                    return true;
+                })
+                $('#display-cf-pwd').keyup(()=>{
+                    controller.comparePWD($('#display-pwd').html(),$('#display-cf-pwd').html(),'.err-display-cf-pwd')
+                    return true;
+                })
+                console.log(model.curUser);
+            })
+
+            break;
+        default:
+            break;
     }
+
 }
+
+view.setErrorMessage = (errMsg,pos,clr=true) => {
+    if (clr) $(`${pos}`).empty();
+    $(`${pos}`).html(errMsg);
+    return false;
+}
+
 let score = 0;
 view.sendQuestion = (question,pos,len) => {
     $('#question-title').text(() => {
